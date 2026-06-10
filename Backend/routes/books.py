@@ -1,74 +1,20 @@
-from flask import Blueprint, request, jsonify
-
+from flask import Blueprint, render_template, request, redirect, url_for
 from models import db, Book
 
-books_bp = Blueprint(
-    "books",
-    __name__
-)
+books_bp = Blueprint('books', __name__)
 
-
-@books_bp.route(
-    "/books",
-    methods=["GET"]
-)
-def get_books():
-
-    books = Book.query.all()
-
-    result = []
-
-    for book in books:
-        result.append({
-            "id": book.id,
-            "title": book.title,
-            "author": book.author,
-            "category": book.category,
-            "quantity": book.quantity
-        })
-
-    return jsonify(result)
-
-
-@books_bp.route(
-    "/books",
-    methods=["POST"]
-)
-def add_book():
-
-    data = request.get_json()
-
-    book = Book(
-        title=data["title"],
-        author=data["author"],
-        category=data["category"],
-        quantity=data["quantity"]
-    )
-
-    db.session.add(book)
-    db.session.commit()
-
-    return jsonify({
-        "message": "Book added successfully"
-    })
-
-
-@books_bp.route(
-    "/books/<int:id>",
-    methods=["DELETE"]
-)
-def delete_book(id):
-
-    book = Book.query.get(id)
-
-    if not book:
-        return jsonify({
-            "message": "Book not found"
-        }), 404
-
-    db.session.delete(book)
-    db.session.commit()
-
-    return jsonify({
-        "message": "Book deleted"
-    })
+@books_bp.route('/books', methods=['GET', 'POST'])
+def manage_books():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        author = request.form.get('author')
+        
+        if title and author:
+            new_book = Book(title=title, author=author, available=True)
+            db.session.add(new_book)
+            db.session.commit()
+        return redirect(url_for('books.manage_books'))
+        
+    all_books = Book.query.all()
+    # This line forces Flask to load the HTML file instead of printing []
+    return render_template('books.html', books=all_books)

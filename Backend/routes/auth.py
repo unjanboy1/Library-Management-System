@@ -1,89 +1,47 @@
-from flask import Blueprint, request, jsonify
-from werkzeug.security import (
-    generate_password_hash,
-    check_password_hash
-)
-
+from flask import Blueprint, render_template, request, redirect
 from models import db, User
 
-auth_bp = Blueprint(
-    "auth",
-    __name__
-)
+auth_bp = Blueprint('auth', __name__)
 
-
-@auth_bp.route(
-    "/register",
-    methods=["POST"]
-)
+@auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        print(f"--> TRYING TO REGISTER: {username}") # Tracking log
+        
+        if not username or not password:
+            return "Username and Password are required!", 400
+            
+        user_exists = User.query.filter_by(username=username).first()
+        if user_exists:
+            print("--> REGISTRATION FAILED: Username already taken.")
+            return "Username already taken!", 400
+            
+        new_user = User(username=username, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        
+        print("--> REGISTRATION SUCCESSFUL! Redirecting to login...")
+        return redirect('/login') # Direct path link
+        
+    return render_template('register.html')
 
-    data = request.get_json()
-
-    name = data.get("name")
-    email = data.get("email")
-    password = data.get("password")
-
-    existing_user = User.query.filter_by(
-        email=email
-    ).first()
-
-    if existing_user:
-        return jsonify({
-            "message": "Email already exists"
-        }), 400
-
-    hashed_password = generate_password_hash(
-        password
-    )
-
-    user = User(
-        name=name,
-        email=email,
-        password=hashed_password
-    )
-
-    db.session.add(user)
-    db.session.commit()
-
-    return jsonify({
-        "message": "Registration successful"
-    })
-
-
-@auth_bp.route(
-    "/login",
-    methods=["POST"]
-)
+@auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-
-    data = request.get_json()
-
-    email = data.get("email")
-    password = data.get("password")
-
-    user = User.query.filter_by(
-        email=email
-    ).first()
-
-    if not user:
-        return jsonify({
-            "message": "User not found"
-        }), 404
-
-    if not check_password_hash(
-        user.password,
-        password
-    ):
-        return jsonify({
-            "message": "Invalid password"
-        }), 401
-
-    return jsonify({
-        "message": "Login successful",
-        "user": {
-            "id": user.id,
-            "name": user.name,
-            "email": user.email
-        }
-    })
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        print(f"--> TRYING TO LOG IN: {username}") # Tracking log
+        
+        user = User.query.filter_by(username=username, password=password).first()
+        if user:
+            print("--> LOGIN SUCCESSFUL! Forcing redirect to dashboard...")
+            return redirect('/dashboard') # Forcing direct path bypass
+            
+        print("--> LOGIN FAILED: Incorrect username or password.")
+        return "Invalid Credentials", 401
+        
+    return render_template('login.html')

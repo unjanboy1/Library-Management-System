@@ -1,110 +1,40 @@
-from flask import Blueprint, request, jsonify
-from datetime import date
+from flask import Blueprint, render_template, request, redirect, url_for
+from models import db, Book, Student, Transaction
+from datetime import datetime
 
-from models import db
-from models import Book
-from models import Transaction
+transactions_bp = Blueprint('transactions', __name__)
 
-transactions_bp = Blueprint(
-    "transactions",
-    __name__
-)
+@transactions_bp.route('/transactions', methods=['GET', 'POST'])
+def manage_transactions():
+    if request.method == 'POST':
+        book_id = request.form.get('book_id')
+        student_id = request.form.get('student_id')
+        
+        book = Book.query.get(book_id)
+        if book and book.available:
+            book.available = False
+            today_str = datetime.now().strftime("%Y-%m-%d")
+            new_tx = Transaction(book_id=book_id, student_id=student_id, issue_date=today_str)
+            db.session.add(new_tx)
+            db.session.commit()
+        return redirect(url_for('transactions.manage_transactions'))
+        
+    all_transactions = Transaction.query.all()
+    available_books = Book.query.filter_by(available=True).all()
+    all_students = Student.query.all()
+    
+    return render_template('transactions.html', 
+                           transactions=all_transactions, 
+                           books=available_books, 
+                           students=all_students)
 
-
-@transactions_bp.route(
-    "/issue-book",
-    methods=["POST"]
-)
-def issue_book():
-
-    data = request.get_json()
-
-    user_id = data["user_id"]
-    book_id = data["book_id"]
-
-    book = Book.query.get(book_id)
-
-    if not book:
-        return jsonify({
-            "message": "Book not found"
-        }), 404
-
-    if book.quantity <= 0:
-        return jsonify({
-            "message": "Book not available"
-        }), 400
-
-    transaction = Transaction(
-        user_id=user_id,
-        book_id=book_id,
-        issue_date=date.today(),
-        status="Issued"
-    )
-
-    book.quantity -= 1
-
-    db.session.add(transaction)
-    db.session.commit()
-
-    return jsonify({
-        "message": "Book issued successfully"
-    })
-
-
-@transactions_bp.route(
-    "/return-book/<int:id>",
-    methods=["POST"]
-)
-def return_book(id):
-
-    transaction = Transaction.query.get(id)
-
-    if not transaction:
-        return jsonify({
-            "message": "Transaction not found"
-        }), 404
-
-    if transaction.status == "Returned":
-        return jsonify({
-            "message": "Book already returned"
-        }), 400
-
-    transaction.status = "Returned"
-    transaction.return_date = date.today()
-
-    book = Book.query.get(
-        transaction.book_id
-    )
-
-    if book:
-        book.quantity += 1
-
-    db.session.commit()
-
-    return jsonify({
-        "message": "Book returned successfully"
-    })
-
-
-@transactions_bp.route(
-    "/issued-books",
-    methods=["GET"]
-)
-def issued_books():
-
-    transactions = Transaction.query.all()
-
-    result = []
-
-    for transaction in transactions:
-
-        result.append({
-            "id": transaction.id,
-            "user_id": transaction.user_id,
-            "book_id": transaction.book_id,
-            "issue_date": str(transaction.issue_date),
-            "return_date": str(transaction.return_date),
-            "status": transaction.status
-        })
-
-    return jsonify(result)
+@transactions_bp.route('/transactions/return/<int:tx_id>', methods=['POST'])
+def return_book(tx_id):
+    tx = Transaction.query.get(tx_id)
+    if tx:
+        book = Book.query.get(tx.book_id)
+        if book:
+            book.available = True
+        db.session.delete(tx)
+        db.session.commit()
+    return redirect(url_for('transactions.manage_transactions'))

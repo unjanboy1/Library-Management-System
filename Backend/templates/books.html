@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Books</title>
+</head>
+<body>
+    <h2>📚 Books Inventory</h2>
+    <a href="{{ url_for('dashboard') }}">◀ Back to Dashboard</a>
+    <hr>
+    
+    <h3>Add New Book</h3>
+    <form method="POST" action="{{ url_for('books.manage_books') }}">
+        <input type="text" name="title" placeholder="Book Title" required>
+        <input type="text" name="author" placeholder="Author Name" required>
+        <button type="submit">Add Book</button>
+    </form>
+    
+    <hr>
+    <h3>Current Inventory</h3>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Status</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>
+                {% if book.available %}
+                    <span style="color: green;">Available</span>
+                {% else %}
+                    <span style="color: red;">Borrowed</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">No books registered yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html> 
