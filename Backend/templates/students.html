@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Students</title>
+</head>
+<body>
+    <h2>🎓 Student Registry</h2>
+    <a href="{{ url_for('dashboard') }}">◀ Back to Dashboard</a>
+    <hr>
+    
+    <h3>Register New Student</h3>
+    <form method="POST" action="{{ url_for('students.manage_students') }}">
+        <input type="text" name="name" placeholder="Student Full Name" required>
+        <input type="email" name="email" placeholder="Student Email" required>
+        <button type="submit">Register Student</button>
+    </form>
+    
+    <hr>
+    <h3>Registered Members</h3>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">No students registered yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

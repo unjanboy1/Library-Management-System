@@ -1,10 +1,6 @@
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent
+import os
 
 class Config:
-    SECRET_KEY = "library_secret_key"
-
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR}/library.db"
-
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'super-secret-key-change-me'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///library.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
