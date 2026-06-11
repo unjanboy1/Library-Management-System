@@ -3,61 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Issue / Return Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>🔄 Issue & Return Desk</h2>
-    <a href="{{ url_for('dashboard') }}">◀ Back to Dashboard</a>
-    <hr>
-    
-    <h3>Issue Book to Student</h3>
-    <form method="POST" action="{{ url_for('transactions.manage_transactions') }}">
-        <label>Select Available Book:</label>
-        <select name="book_id" required>
-            {% for book in books %}
-                <option value="{{ book.id }}">{{ book.title }} (by {{ book.author }})</option>
-            {% endfor %}
-        </select>
+    <div class="container">
+        <h2>🔄 Issue & Return Desk</h2>
+        <a href="{{ url_for('dashboard') }}" class="back-link">&larr; Back to Dashboard</a>
         
-        <br><br>
+        <h3>Issue Book to Student</h3>
+        <form method="POST" action="{{ url_for('transactions.manage_transactions') }}">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div class="form-group">
+                    <label style="font-weight: 500; font-size: 0.9rem; color: var(--primary);">Select Available Book</label>
+                    <select name="book_id" required>
+                        {% for book in books %}
+                            <option value="{{ book.id }}">{{ book.title }} (by {{ book.author }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label style="font-weight: 500; font-size: 0.9rem; color: var(--primary);">Select Borrowing Student</label>
+                    <select name="student_id" required>
+                        {% for student in students %}
+                            <option value="{{ student.id }}">{{ student.name }} (ID: {{ student.id }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <button type="submit" style="width: 100%;">Complete Issue Transaction</button>
+        </form>
         
-        <label>Select Borrowing Student:</label>
-        <select name="student_id" required>
-            {% for student in students %}
-                <option value="{{ student.id }}">{{ student.name }} (ID: {{ student.id }})</option>
-            {% endfor %}
-        </select>
-        
-        <br><br>
-        <button type="submit">Complete Issue Transaction</button>
-    </form>
-    
-    <hr>
-    <h3>Active Loans Log</h3>
-    <table border="1">
-        <tr>
-            <th>Transaction ID</th>
-            <th>Book ID</th>
-            <th>Student ID</th>
-            <th>Issue Date</th>
-            <th>Action</th>
-        </tr>
-        {% for tx in transactions %}
-        <tr>
-            <td>{{ tx.id }}</td>
-            <td>{{ tx.book_id }}</td>
-            <td>{{ tx.student_id }}</td>
-            <td>{{ tx.issue_date }}</td>
-            <td>
-                <form method="POST" action="{{ url_for('transactions.return_book', tx_id=tx.id) }}">
-                    <button type="submit" style="background-color: lightcoral;">Mark as Returned</button>
-                </form>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="5">No books are currently checked out.</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <h3>Active Loans Log</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tx ID</th>
+                    <th>Book ID</th>
+                    <th>Student ID</th>
+                    <th>Issue Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tx in transactions %}
+                <tr>
+                    <td>{{ tx.id }}</td>
+                    <td>#{{ tx.book_id }}</td>
+                    <td>ID: {{ tx.student_id }}</td>
+                    <td>{{ tx.issue_date }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('transactions.return_book', tx_id=tx.id) }}" style="background: transparent; border: none; padding: 0; margin: 0;">
+                            <button type="submit" class="btn-danger" style="padding: 6px 14px; font-size: 0.85rem;">Mark Returned</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center; color: var(--text-muted);">No books are currently checked out.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Library Management System</h1>
-    <p>Manage books, students, and transactions in one place</p>
-    
-    <a href="{{ url_for('auth.login') }}">Login</a> | 
-    <a href="{{ url_for('auth.register') }}">Register</a>
+    <div class="container hero-layout">
+        <h1 class="hero-title">THE GRAND ARCHIVE</h1>
+        <p class="hero-subtitle">A seamless, aesthetic portal to manage inventory, catalog student registries, and monitor active transactional loans.</p>
+        
+        <div class="hero-actions">
+            <a href="{{ url_for('auth.login') }}" class="btn-primary-link">SIGN IN TO DESK</a>
+            <a href="{{ url_for('auth.register') }}" class="btn-secondary-link">CREATE ACCOUNT</a>
+        </div>
+    </div>
 </body>
 </html>
