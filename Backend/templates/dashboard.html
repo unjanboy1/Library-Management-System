@@ -2,25 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>Library Control Dashboard</h2>
-    <hr>
-    <div>
-        <h3>Quick Stats</h3>
-        <p>Total Books: <strong>{{ books_count }}</strong></p>
-        <p>Registered Students: <strong>{{ students_count }}</strong></p>
-        <p>Active Issues: <strong>{{ tx_count }}</strong></p>
+    <div class="container">
+        <h2>Library Control Dashboard</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Total Books</p>
+                <strong>{{ books_count }}</strong>
+            </div>
+            <div class="stat-card">
+                <p>Registered Students</p>
+                <strong>{{ students_count }}</strong>
+            </div>
+            <div class="stat-card">
+                <p>Active Issues</p>
+                <strong>{{ tx_count }}</strong>
+            </div>
+        </div>
+        
+        <hr>
+        <h3>Management Actions</h3>
+        <ul class="action-list">
+            <li><a href="{{ url_for('books.manage_books') }}">📚 Manage Books Catalog</a></li>
+            <li><a href="{{ url_for('students.manage_students') }}">🎓 Manage Student Registry</a></li>
+            <li><a href="{{ url_for('transactions.manage_transactions') }}">🔄 Issue / Return Desk</a></li>
+        </ul>
+        
+        <hr>
+        <a href="{{ url_for('home') }}" style="color: var(--danger);">Log Out of Dashboard</a>
     </div>
-    <hr>
-    <h3>Management Actions</h3>
-    <ul>
-        <li><a href="{{ url_for('books.manage_books') }}">📚 Manage Books Catalog</a></li>
-        <li><a href="{{ url_for('students.manage_students') }}">🎓 Manage Student Registry</a></li>
-        <li><a href="{{ url_for('transactions.manage_transactions') }}">🔄 Issue / Return Books</a></li>
-    </ul>
-    <br>
-    <a href="{{ url_for('home') }}">Log Out</a>
 </body>
 </html>

@@ -1,19 +1,310 @@
+/* Import Highly Aesthetic & Readable Luxury Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Premium Palette Colors */
+    --bg-overlay: rgba(10, 14, 22, 0.92);   /* Deep library ambient layer */
+    --accent-gold: #dfb76c;                /* Lustrous Champagne Gold */
+    --accent-hover: #f3d092;               /* Vibrant accent glow */
+    --text-primary: #ffffff;               /* Solid crisp white text */
+    --text-secondary: #cbd5e1;             /* Highly legible light slate */
+    --success: #34d399;
+    --danger: #f87171;
+    --radius-sm: 6px;
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Reset & Ambient Viewport Settings */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 40px;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1920') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 80px 10%; 
+    color: var(--text-primary);
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* 100% TRANSPARENT WRAPPER - NO BACKGROUND BOXES */
+.container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Clean Form Structural Sizing (No Enclosing Boxes) */
+.auth-container {
+    width: 100%;
+    max-width: 520px !important; 
+    margin-top: 5vh !important;
+}
+
+/* Redesigned Epic Cinematic Titles */
+h1, .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 600; 
+    letter-spacing: 0.14em; 
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-transform: uppercase;
     text-align: center;
 }
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    display: inline-block;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+
+h2 { 
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.4rem; 
+    font-weight: 700; 
+    color: #ffffff; 
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1); 
+    padding-bottom: 20px; 
+    margin-bottom: 45px; 
+    width: 100%;
+    text-align: left;
 }
-input, button {
+
+h3 { 
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; 
+    font-weight: 600;
+    color: var(--accent-gold); 
+    letter-spacing: 0.05em;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    width: 100%;
+    text-align: left;
+}
+
+p, .hero-subtitle { 
+    color: var(--text-secondary); 
+    line-height: 1.8; 
+    font-size: 1.15rem;
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+/* Landing Page Action Layout Settings Fixes */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Bold & Sizable Input Fields */
+form {
+    width: 100%;
+    margin-bottom: 45px;
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+select {
+    width: 100%;
+    padding: 18px 22px; 
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem; 
+    font-weight: 400;
+    color: #ffffff;
+    box-sizing: border-box;
+    transition: var(--transition);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 0 1px var(--accent-gold);
+}
+
+select option {
+    background-color: #0b0f19 !important;
+    color: #ffffff !important;
+}
+
+/* Upgraded Signature Action Blocks */
+button, input[type="submit"], .btn-primary-link, .btn-secondary-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--accent-gold);
+    color: #0a0e16;
+    border: none;
+    padding: 18px 40px; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; 
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em; 
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+button:hover, input[type="submit"]:hover, .btn-primary-link:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 0 30px rgba(223, 183, 108, 0.3);
+    color: #0a0e16;
+}
+
+/* Transparent Secondary Button Style */
+.btn-secondary-link {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.btn-secondary-link:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    box-shadow: 0 0 30px rgba(223, 183, 108, 0.1);
+}
+
+/* Form Layout Alignment for Inventory Pages */
+.form-inline {
+    flex-direction: row;
+    gap: 15px;
+    align-items: stretch;
+}
+.form-inline button {
+    width: auto;
+    margin-top: 0;
+}
+
+/* Links & Subtext Settings */
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+.back-link {
+    align-self: flex-start;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+}
+
+.auth-container p, 
+form + p {
+    text-align: center;
+    font-size: 1.05rem;
+    margin-top: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+}
+
+/* Minimalist Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+th {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--accent-gold);
+    font-weight: 600;
+    text-align: left;
+    padding: 16px 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+td {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.btn-danger-sm {
+    background: transparent;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    color: var(--danger);
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: auto;
+    margin: 0;
+}
+.btn-danger-sm:hover {
+    background: var(--danger);
+    color: #ffffff;
+    box-shadow: none;
+}
+
+/* Dashboard Controls List */
+.action-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 5px; width: 100%; }
+.action-list li a {
     display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 200px;
+    padding: 22px 0;
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.action-list li a:hover { color: var(--accent-gold); padding-left: 8px; }
+
+/* Dashboard Metrics Grid */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin: 50px 0; width: 100%; }
+.stat-card p { margin: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); text-align: left; }
+.stat-card strong { font-size: 3rem; color: var(--accent-gold); display: block; margin-top: 6px; font-family: 'Cormorant Garamond', serif; font-weight: 600; text-align: left; }
+
+.badge { font-size: 1rem; font-weight: 600; }
+.badge-success { color: var(--success); }
+.badge-danger { color: var(--danger); }
+
+hr { border: 0; height: 1px; background: rgba(255, 255, 255, 0.08); margin: 45px 0; width: 100%; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

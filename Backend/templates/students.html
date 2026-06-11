@@ -3,38 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>🎓 Student Registry</h2>
-    <a href="{{ url_for('dashboard') }}">◀ Back to Dashboard</a>
-    <hr>
-    
-    <h3>Register New Student</h3>
-    <form method="POST" action="{{ url_for('students.manage_students') }}">
-        <input type="text" name="name" placeholder="Student Full Name" required>
-        <input type="email" name="email" placeholder="Student Email" required>
-        <button type="submit">Register Student</button>
-    </form>
-    
-    <hr>
-    <h3>Registered Members</h3>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-        </tr>
-        {% for student in students %}
-        <tr>
-            <td>{{ student.id }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.email }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="3">No students registered yet.</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <h2>🎓 Student Registry</h2>
+        <a href="{{ url_for('dashboard') }}" class="back-link">&larr; Back to Dashboard</a>
+        
+        <h3>Register New Student</h3>
+        <form method="POST" action="{{ url_for('students.manage_students') }}" class="form-inline">
+            <div style="flex: 2; display: flex; gap: 15px;">
+                <input type="text" name="name" placeholder="Student Full Name" required>
+                <input type="email" name="email" placeholder="Student Email" required>
+            </div>
+            <button type="submit">Register Student</button>
+        </form>
+        
+        <h3>Registered Members</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Management</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td><strong>{{ student.name }}</strong></td>
+                    <td>{{ student.email }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('students.delete_student', student_id=student.id) }}" style="display:inline; margin:0; padding:0;">
+    <button type="submit" class="btn-danger-sm">Remove</button>
+</form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-secondary);">No students registered yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
