@@ -291,6 +291,8 @@ td {
     font-size: 1.2rem;
     font-weight: 400;
 }
+
+
 .action-list li a:hover { color: var(--accent-gold); padding-left: 8px; }
 
 /* Dashboard Metrics Grid */
