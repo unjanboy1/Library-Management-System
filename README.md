@@ -1,59 +1,48 @@
-📚 Library Management System
+# 📚 Library Management System
 
-A modern Library Management System built using Flask, SQLite, HTML, CSS, and JavaScript. The system helps librarians manage books, members, book issuing, returns, overdue records, and library activities through a user-friendly interface.
+A modern, full-stack **Library Management System** built using **Python Flask** and **SQLite**. Designed for educational institutions and community libraries, this platform streamlines the management of catalogs, memberships, and circulation workflows while offering real-time insights through an interactive dashboard.
 
-🚀 Features
+---
 
-👤 User Management
-User Registration
-User Login Authentication
-Member Management
-Role-Based Users (Admin, Student, Faculty)
-Member Deletion
+## 🚀 Key Features
 
-📖 Book Management
+### 👤 User & Membership Management
+* **Secure Authentication:** User registration and session-based login.
+* **Role-Based Access Control (RBAC):** Distinct permissions and workflows for **Admins**, **Students**, and **Faculty**.
+* **Member Administration:** Full lifecycle management including profile registration and structural deletion.
 
-Add New Books
-Update Book Information
-Delete Books
-View Book Catalogue
-Track Available Quantity
+### 📖 Book Inventory Management
+* **Dynamic Catalogue:** Comprehensive view of the entire book inventory with advanced tracking.
+* **Automated Stock Control:** Live tracking of "Available Quantity" that auto-updates upon issue or return events.
+* **Full CRUD Operations:** Add, update, and remove book listings with ease.
 
-🔖 Issue & Return Management
+### 🔖 Circulation & Fine Automation
+* **Issue & Return Workflow:** Seamless checkout and check-in pipelines mapped to specific members.
+* **Fine Calculation Engine:** Automated logic to calculate penalties for late returns based on due dates.
+* **Overdue Tracking:** Proactive tracking of outstanding items to identify late returns instantly.
 
-Issue Books to Members
-Return Issued Books
-Automatic Quantity Updates
-Fine Calculation for Late Returns
-Overdue Book Tracking
+### 📊 Analytics Dashboard & Activity Logging
+* **Real-time Metrics:** High-level counters for *Total Books*, *Active Members*, *Currently Issued*, and *Overdue Items*.
+* **Audit Trails & Logs:** System-wide activity feeds logging structural events (logins, additions, issues, and returns) for security compliance.
 
-📊 Dashboard
+---
 
-Total Books Count
-Registered Members Count
-Issued Books Count
-Overdue Books Count
-Returned Books Today
-Recent Activities Feed
+## 🛠️ Tech Stack
 
-📝 Activity Logging
+* **Backend:** Python, Flask, Flask-SQLAlchemy (ORM), Flask-CORS
+* **Database:** SQLite3
+* **Frontend:** HTML5, CSS3, JavaScript (ES6+), Font Awesome (Icons)
 
-User Login Logs
-Book Addition Logs
-Book Issue Logs
-Book Return Logs
-Member Registration Logs
+---
 
-🛠️ Technologies Used
+## ⚙️ Installation & Setup
 
-Backend
-Python
-Flask
-Flask-CORS
-Flask-SQLAlchemy
-SQLite
-Frontend
-HTML5
-CSS3
-JavaScript
-Font Awesome
+Follow these steps to configure and run the application in a local development environment.
+
+### 1. Prerequisites
+Ensure you have **Python 3.x** and **Git** installed on your machine.
+
+### 2. Clone the Repository
+```bash
+git clone [https://github.com/your-username/library-management-system.git](https://github.com/your-username/library-management-system.git)
+cd library-management-system
