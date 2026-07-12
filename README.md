@@ -1,50 +1,48 @@
-## 📌 Student Task Manager (Flask + GitHub Collaboration Project)
+# 📚 Library Management System
 
-A full-stack beginner-friendly web application built using **Python Flask** and **SQLite**, designed to manage student tasks efficiently. This project is developed as a **team collaboration project** to practice real-world software development workflows including Git branching, pull requests, and feature-based development.
-
-The system allows users to register, log in, and manage their daily tasks through a simple and clean dashboard. Each feature is developed in separate branches by different team members and merged into the main branch after review.
-
-## 🚀 Features
-
-* User Registration & Login System
-* Secure Session Management
-* Add, Edit, Delete Tasks
-* Mark Tasks as Completed
-* User-specific task dashboard
-* Clean and responsive UI
-* Team-based Git workflow (branches & pull requests)
+A modern, full-stack **Library Management System** built using **Python Flask** and **SQLite**. Designed for educational institutions and community libraries, this platform streamlines the management of catalogs, memberships, and circulation workflows while offering real-time insights through an interactive dashboard.
 
 ---
 
-## 🛠 Tech Stack
+## 🚀 Key Features
 
-* Python
-* Flask
-* SQLite
-* HTML, CSS
-* Git & GitHub
+### 👤 User & Membership Management
+* **Secure Authentication:** User registration and session-based login.
+* **Role-Based Access Control (RBAC):** Distinct permissions and workflows for **Admins**, **Students**, and **Faculty**.
+* **Member Administration:** Full lifecycle management including profile registration and structural deletion.
+
+### 📖 Book Inventory Management
+* **Dynamic Catalogue:** Comprehensive view of the entire book inventory with advanced tracking.
+* **Automated Stock Control:** Live tracking of "Available Quantity" that auto-updates upon issue or return events.
+* **Full CRUD Operations:** Add, update, and remove book listings with ease.
+
+### 🔖 Circulation & Fine Automation
+* **Issue & Return Workflow:** Seamless checkout and check-in pipelines mapped to specific members.
+* **Fine Calculation Engine:** Automated logic to calculate penalties for late returns based on due dates.
+* **Overdue Tracking:** Proactive tracking of outstanding items to identify late returns instantly.
+
+### 📊 Analytics Dashboard & Activity Logging
+* **Real-time Metrics:** High-level counters for *Total Books*, *Active Members*, *Currently Issued*, and *Overdue Items*.
+* **Audit Trails & Logs:** System-wide activity feeds logging structural events (logins, additions, issues, and returns) for security compliance.
 
 ---
 
-## 👥 Collaboration Workflow
+## 🛠️ Tech Stack
 
-This project follows a real-world development structure:
-
-* `main` → Stable production-ready code
-* `zaib` → Authentication module (Login/Register/Logout)
-* `maryam` → Task management module (CRUD operations)
-
-Each feature is developed in separate branches and merged via pull requests.
+* **Backend:** Python, Flask, Flask-SQLAlchemy (ORM), Flask-CORS
+* **Database:** SQLite3
+* **Frontend:** HTML5, CSS3, JavaScript (ES6+), Font Awesome (Icons)
 
 ---
 
-## 📂 Project Goal
+## ⚙️ Installation & Setup
 
-The main goal of this project is to learn:
+Follow these steps to configure and run the application in a local development environment.
 
-* Full-stack web development basics
-* Git branching and team collaboration
-* Backend + frontend integration
-* Database handling with SQLite
-* Real project workflow used in software companies
+### 1. Prerequisites
+Ensure you have **Python 3.x** and **Git** installed on your machine.
 
+### 2. Clone the Repository
+```bash
+git clone [https://github.com/your-username/library-management-system.git](https://github.com/your-username/library-management-system.git)
+cd library-management-system
