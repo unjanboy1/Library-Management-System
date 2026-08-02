@@ -1,116 +1,125 @@
 +-----------------------------------------------------------------------------------+
 |                                                                                   |
-|    _     _ _     _ __     __  __ _   _ _   _ _  _____                             |
-|   | |   (_) |__ | |\ \   / / |  _\ | | | | | | |/ ____|                           |
-|   | |   | | '_ \| | \ \_/ /  | |  \| | | | | | | (___                             |
-|   | |___| | |_) | |__| |   | | |\  | |_| | |_| |\___ \                            |
-|   |_____|_|_.__/|____|_|   |_|_| \_|\___/ \___/ _____/                            |
+|  # 📚 Enterprise Library Management System (LMS)                                  |
 |                                                                                   |
-|   # 🐾✨ Cozy Library Management System ✨🐾                                      |
+|  > **A robust, full-stack administrative platform designed for modern academic**  |
+|  > **and organizational libraries.**                                              |
 |                                                                                   |
-|   > *Bringing joy, order, and a little spark of magic to your favorite bookish    |
-|     corner!* 📖💖                                                                |
+|  ---                                                                              |
 |                                                                                   |
-|   ---                                                                             |
+|  ## 📑 Table of Contents                                                          |
+|  - [System Architecture](#-system-architecture)                                   |
+|  - [Core Features](#-core-features)                                               |
+|  - [Technology Stack](#-technology-stack)                                         |
+|  - [Operational Workflow](#-operational-workflow)                                 |
+|  - [System Requirements](#-system-requirements)                                   |
+|  - [Roadmap](#-roadmap)                                                           |
 |                                                                                   |
-|   ## 🌸 Key Features                                                              |
+|  ---                                                                              |
 |                                                                                   |
-|   ### 👤 Friends & Role Management                                                |
-|   * **Sweet Welcomes:** Friendly user registration, cozy login authentication,    |
-|     and smooth session handling.                                                  |
-|   * **Role-Based Access Control (RBAC):** Tailored views for Admins, Faculty,     |
-|     and Students so everyone feels right at home.                                 |
-|   * **Member Lifecycle:** Easy-peasy member onboarding, profile updates, and      |
-|     gentle offboarding.                                                           |
+|  ## 🏗️ System Architecture                                                         |
 |                                                                                   |
-|   ### 📚 Book Nook Inventory                                                      |
-|   * **Happy Cataloging:** Add, edit, organize, and search through book records    |
-|     with ease.                                                                    |
-|   * **Live Shelf Updates:** Dynamic stock updates so you always know which        |
-|     stories are ready for a hug!                                                  |
-|   * **Metadata Indexing:** Keep neat track of ISBNs, authors, publishers,         |
-|     editions, and categories.                                                     |
+|  ```text                                                                          |
+|  +-----------------------------------------------------------------------------+  |
+|  |                            PRESENTATION LAYER                               |  |
+|  |                Responsive UI (HTML5 / CSS3 / JavaScript / Font Awesome)     |  |
+|  +--------------------------------------+--------------------------------------+  |
+|                                         |                                         |
+|                                dynamic REST APIs                                  |
+|                                         v                                         |
+|  +--------------------------------------+--------------------------------------+  |
+|  |                            APPLICATION LAYER                                |  |
+|  |                     Flask Microframework (Python 3.x)                      |  |
+|  |            Authentication | Authorization | Business Logic Engine           |  |
+|  +--------------------------------------+--------------------------------------+  |
+|                                         |                                         |
+|                                   ORM Queries                                     |
+|                                         v                                         |
+|  +--------------------------------------+--------------------------------------+  |
+|  |                               DATA LAYER                                    |  |
+|  |                      SQLite Database (SQLAlchemy ORM)                       |  |
+|  |               Users | Inventory | Active Loans | System Logs                |  |
+|  +-----------------------------------------------------------------------------+  |
+|  ```                                                                              |
 |                                                                                   |
-|   ### 🔖 Borrow & Return Whispers                                                 |
-|   * **Smooth Transactions:** Effortless book checkouts and check-ins that take    |
-|     just a click.                                                                 |
-|   * **Automated Quantity Sync:** Quantities update themselves automatically      |
-|     whenever a book goes on an adventure or returns home.                         |
-|   * **Gentle Fine Engine:** Gentle overdue tracking and fine calculations to keep  |
-|     our little library running smoothly.                                          |
+|  ---                                                                              |
 |                                                                                   |
-|   ### 📊 Dashboard Delights                                                       |
-|   * **At-a-Glance Overview:** A bright single-pane view showing total books,      |
-|     registered users, active loans, and overdue items.                            |
-|   * **Daily Highlights:** Track daily returns and outstanding fines with zero     |
-|     stress.                                                                       |
-|   * **Live Activity Stream:** A cute live feed showing all the cozy actions       |
-|     happening across the platform in real time!                                   |
+|  ## ⚙️ Core Features                                                             |
 |                                                                                   |
-|   ### 📝 Audit & System Logs                                                      |
-|   * **Friendly Audit:** Log login attempts, timestamped user registrations,       |
-|     and permission updates.                                                       |
-|   * **Careful Inventory Logs:** Track book additions, modifications, checkouts,   |
-|     and returns so nothing ever gets lost.                                        |
+|  ### 🔒 Identity & Access Management (IAM)                                        |
+|  * **Role-Based Access Control (RBAC):** Tiered permissions enforcing access     |
+|    boundaries for Administrator, Faculty, and Student roles.                      |
+|  * **Secure Authentication:** User credential validation and session handling.    |
+|  * **Member Lifecycle Management:** Streamlined onboarding, profile status       |
+|    tracking, and member revocation workflows.                                     |
 |                                                                                   |
-|   ---                                                                             |
+|  ### 📦 Inventory & Catalog Management                                            |
+|  * **Catalog Control:** Comprehensive CRUD operations (Create, Read, Update,      |
+|    Delete/Archive) for library items.                                             |
+|  * **Automated Stock Tracking:** Dynamic stock updates guaranteeing real-time     |
+|    inventory visibility across all categories.                                    |
+|  * **Metadata Metadata Indexing:** Tracks key attributes including ISBN, author,   |
+|    publisher, genre, and edition.                                                 |
 |                                                                                   |
-|   ## 🛠️ Technology Stack                                                          |
+|  ### 🔄 Circulation Engine & Fine Calculation                                    |
+|  * **Automated Check-in / Check-out:** Fast transaction handling for resource     |
+|    borrowing and returns.                                                         |
+|  * **Stock Synchronization:** Automatic inventory decrementing on check-out      |
+|    and incrementing upon return.                                                  |
+|  * **Automated Penalty System:** Configurable fine processing engine calculating   |
+|    accrued penalties for overdue items daily.                                     |
 |                                                                                   |
-|   | Layer | Technologies |                                                         |
-|   | :--- | :--- |                                                                 |
-|   | **Backend Framework** | 🐍 Python, 🌶️ Flask, Flask-CORS |                     |
-|   | **Database & ORM** | 🗃️ SQLite, Flask-SQLAlchemy |                           |
-|   | **Frontend UI** | 🌐 HTML5, 🎨 CSS3, ⚡ JavaScript (ES6+) |                     |
-|   | **Icons & Aesthetics** | ✨ Font Awesome |                                 |
+|  ### 📈 Operational Dashboard & Reporting                                         |
+|  * **Analytics Overview:** Single-pane dashboard displaying metrics for total     |
+|    titles, registered users, active loans, and overdue counts.                    |
+|  * **Real-time Activity Stream:** Centralized log highlighting recent checkouts,  |
+|    returns, and registry changes.                                                 |
+|  * **Audit Logging:** System logs capturing authentication attempts, user       |
+|    creations, catalog updates, and transactions for compliance.                   |
 |                                                                                   |
-|   ---                                                                             |
+|  ---                                                                              |
 |                                                                                   |
-|   ## 🎀 Cute System Architecture                                                 |
+|  ## 🛠️ Technology Stack                                                           |
 |                                                                                   |
-|                  +----------------------------------+                             |
-|                  |       🎨 Frontend Interface      |                             |
-|                  |  (HTML5 / CSS3 / JavaScript / FA) |                             |
-|                  +-----------------+----------------+                             |
-|                                    |                                              |
-|                           💌 REST API Requests                                    |
-|                                    v                                              |
-|                  +----------------------------------+                             |
-|                  |         🐍 Flask Backend         |                             |
-|                  | (Authentication / Business Logic) |                             |
-|                  +-----------------+----------------+                             |
-|                                    |                                              |
-|                             ✨ ORM Queries                                         |
-|                                    v                                              |
-|                  +----------------------------------+                             |
-|                  |        🗃️ SQLite Database        |                             |
-|                  | (Books / Users / Issues / Logs)  |                             |
-|                  +----------------------------------+                             |
+|  | Component | Specification | Description |                                      |
+|  | :--- | :--- | :--- |                                                           |
+|  | **Language** | Python 3.10+ | Core Application Runtime |                        |
+|  | **Backend** | Flask | Web Framework & REST Endpoint Router |                   |
+|  | **Middleware** | Flask-CORS | Cross-Origin Resource Sharing Handler |             |
+|  | **ORM** | Flask-SQLAlchemy | Object-Relational Database Mapping |               |
+|  | **Database** | SQLite3 | Embedded Relational Database |                          |
+|  | **Frontend UI** | HTML5 / CSS3 / JavaScript | Modern Responsive Web UI |       |
+|  | **Iconography** | Font Awesome 6 | Standard Interface Components |           |
 |                                                                                   |
-|   ---                                                                             |
+|  ---                                                                              |
 |                                                                                   |
-|   ## 🎈 Sweet Operational Flow                                                    |
+|  ## 🔁 Operational Workflow                                                       |
 |                                                                                   |
-|   1. **Warm Welcomes:** Register users with assigned roles (Student, Faculty,     |
-|      Admin).                                                                      |
-|   2. **Catalog Nesting:** Add books with stock counts into our cozy database      |
-|      catalog.                                                                     |
-|   3. **Book Adventures:** Validate member requests and safely loan out books      |
-|      (stock -1).                                                                  |
-|   4. **Happy Returns:** Welcome books back (stock +1), check dates, and manage    |
-|      overdue fines gently.                                                        |
-|   5. **System Whispers:** Record transaction details in audit logs and update     |
-|      dashboard metrics automatically!                                             |
+|  1. **Authentication & Authorization:** System checks user permissions before      |
+|     granting access to specific module tools.                                     |
+|  2. **Inventory Entry:** New items are registered with specific quantities and     |
+|     catalog attributes.                                                           |
+|  3. **Loan Request Processing:** Validates patron account status and decrements     |
+|     available stock upon issuance.                                                |
+|  4. **Return & Settlement:** Increments available inventory stock, evaluates due   |
+|     date criteria, and computes penalties if applicable.                          |
+|  5. **Audit Logging:** System automatically commits transaction state changes to    |
+|     immutable event records.                                                      |
 |                                                                                   |
-|   ---                                                                             |
+|  ---                                                                              |
 |                                                                                   |
-|   ## 🌟 Future Whispers & Dreams                                                  |
+|  ## 📌 System Requirements                                                         |
 |                                                                                   |
-|   * **💌 Email Nudges:** Automated reminders for upcoming due dates and fine       |
-|     updates.                                                                      |
-|   * **🔍 Barcode/QR Magic:** Instant checkouts and returns using simple scanner   |
-|     code.                                                                         |
-|   * **📊 Visual Analytics:** Export cozy summary reports straight to PDF and      |
-|     Excel formats.                                                                |
+|  * **Python:** v3.8 or higher                                                     |
+|  * **Browser Support:** Chrome, Firefox, Safari, Edge (Modern standard ES6+)       |
+|  * **Dependencies:** `Flask`, `Flask-SQLAlchemy`, `Flask-CORS`                      |
+|                                                                                   |
+|  ---                                                                              |
+|                                                                                   |
+|  ## 🚀 Roadmap                                                                    |
+|                                                                                   |
+|  * [ ] Integration with SMTP services for automated email due-date alerts.        |
+|  * [ ] Hardware barcode and QR scanner integration for fast checkout routing.     |
+|  * [ ] Export engine for downloading usage and penalty metrics (PDF/Excel).        |
 |                                                                                   |
 +-----------------------------------------------------------------------------------+
