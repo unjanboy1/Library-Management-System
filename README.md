@@ -1,59 +1,46 @@
-📚 Library Management System
+# 📚 Library Management System
 
-A modern Library Management System built using Flask, SQLite, HTML, CSS, and JavaScript. The system helps librarians manage books, members, book issuing, returns, overdue records, and library activities through a user-friendly interface.
+A production-ready, full-stack Web Application built to streamline day-to-day library operations, automate inventory tracking, and manage member activities with high efficiency.
 
-🚀 Features
+---
 
-👤 User Management
-User Registration
-User Login Authentication
-Member Management
-Role-Based Users (Admin, Student, Faculty)
-Member Deletion
+## 🚀 Key Features
 
-📖 Book Management
+### 👤 User & Role Management
+* **Authentication:** Secure user registration, authentication, and session handling.
+* **Role-Based Access Control (RBAC):** Granular permissions split across Admin, Faculty, and Student roles.
+* **Member Lifecycle:** Streamlined onboarding, profile updates, and member offboarding.
 
-Add New Books
-Update Book Information
-Delete Books
-View Book Catalogue
-Track Available Quantity
+### 📖 Book Inventory Management
+* **Catalog Control:** Add, edit, soft-delete, and search book records across categories.
+* **Real-time Stock Tracking:** Dynamic stock updates reflect physical availability instantly.
+* **Metadata Indexing:** Track ISBNs, authors, publishers, editions, and categories.
 
-🔖 Issue & Return Management
+### 🔖 Issue & Return Workflow
+* **Automated Transactions:** Seamless book checkout and check-in workflows.
+* **Quantity Syncing:** Auto-increment/decrement stock counts upon checkout or return.
+* **Fine Engine:** Automatic overdue detection and fine calculation based on daily rental policy rates.
 
-Issue Books to Members
-Return Issued Books
-Automatic Quantity Updates
-Fine Calculation for Late Returns
-Overdue Book Tracking
+### 📊 Operations Dashboard
+* **High-Level Metrics:** Single-pane view of total books, registered users, active loans, and total overdues.
+* **Daily Summary:** Track daily returns and outstanding fine collections.
+* **Activity Stream:** Live audit feed showing real-time platform actions.
 
-📊 Dashboard
+### 📝 Audit & System Logging
+* **User Audit:** Log login attempts, timestamped user registrations, and permission updates.
+* **Inventory Logs:** Track book additions, modifications, checkouts, and returns for accountability.
 
-Total Books Count
-Registered Members Count
-Issued Books Count
-Overdue Books Count
-Returned Books Today
-Recent Activities Feed
+---
 
-📝 Activity Logging
+## 🛠️ Technology Stack
 
-User Login Logs
-Book Addition Logs
-Book Issue Logs
-Book Return Logs
-Member Registration Logs
+| Layer | Technologies |
+| :--- | :--- |
+| **Backend Framework** | Python, Flask, Flask-CORS |
+| **Database & ORM** | SQLite, Flask-SQLAlchemy |
+| **Frontend UI** | HTML5, CSS3, JavaScript (ES6+) |
+| **Icons & Aesthetics** | Font Awesome |
 
-🛠️ Technologies Used
+---
 
-Backend
-Python
-Flask
-Flask-CORS
-Flask-SQLAlchemy
-SQLite
-Frontend
-HTML5
-CSS3
-JavaScript
-Font Awesome
+## 🏗️ System Architecture & Workflow
