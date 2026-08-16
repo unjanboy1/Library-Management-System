@@ -1,20 +1,20 @@
-# 📚 Enterprise Library Management System (ELMS)
+# 📚 Library Management System (LMS)
 
-A robust, full-stack web application engineered to streamline asset management, membership lifecycles, and operational workflows for modern library infrastructures. Built on a modular **Python Flask** backend and powered by an optimized **SQLite** relational database, this platform features role-based access control, an automated fiscal engine for compliance, and granular activity auditing.
+An enterprise-grade, full-stack management solution engineered to automate asset cataloging, membership lifecycles, and circulation workflows. Built on a modular **Python Flask** architecture and powered by **Flask-SQLAlchemy**, this system delivers a secure, role-based platform for managing library operations with real-time analytical insights and comprehensive activity tracking.
 
 ---
 
-## 🚀 Core Architecture & Features
+## 🚀 Core Features
 
 ### 👤 Identity & Access Management (IAM)
-* **Role-Based Access Control (RBAC):** Tiered permissions mapping specific access boundaries for **Admin**, **Student**, and **Faculty** roles.
-* **Session Security:** State-managed user registration, secure credential verification, and protected routing.
-* **Member Lifecycle Administration:** Centralized registry for adding, profiling, and deprecating system actors.
+* **Role-Based Access Control (RBAC):** Tiered system permissions separating administrative capabilities from standard **Student** and **Faculty** workflows.
+* **Session Security:** Secure user registration, credential-validated login protocols, and route protection middleware.
+* **Member Registry:** Centralized portal for profiling, monitoring, and structural offboarding of library members.
 
-### 📖 Asset & Catalog Management
-* **Inventory Control:** Full CRUD capabilities for resource ingestion, metadata maintenance, and asset deletion.
-* **Real-time Stock Serialization:** Dynamically tracks available quantities across the inventory pool, reducing concurrency conflicts.
-* **Global Catalogue:** Performance-focused view layout for instantaneous resource indexing and discovery.
+### 📖 Inventory & Catalogue Architecture
+* **Asset Lifecycle Management:** Full CRUD (Create, Read, Update, Delete) capability for library resources.
+* **Real-Time Stock Serialization:** Dynamic tracking of available stock quantities that auto-increments or decrements upon transaction events to eliminate race conditions.
+* **Unified Catalogue:** High-performance, searchable interface exposing real-time book metadata and availability states.
 
 ### 🔖 Transactional Circulation Engine
 * **Circulation Lifecycle:** Automated workflows linking book issuance and returns directly to active member accounts.
@@ -23,10 +23,10 @@ A robust, full-stack web application engineered to streamline asset management, 
 
 ### 📊 Operational Intelligence Dashboard
 * **Dynamic Analytics:** Real-time visibility into mission-critical metrics:
-  | Metric | Description |
+  | Metric | Functional Description |
   | :--- | :--- |
-  | **Total Cataloged** | Global aggregate of books managed across the ecosystem. |
-  | **Active Directory** | Total count of verified system members. |
+  | **Total Cataloged** | Global aggregate of unique books managed across the ecosystem. |
+  | **Active Directory** | Total count of verified system members (Admin, Student, Faculty). |
   | **Circulation Load** | Real-time counter of assets checked out by consumers. |
   | **Deficit Monitoring** | Live calculation of overdue books outstanding. |
 * **Daily Ledger:** Real-time visibility into transaction metrics executing within the active 24-hour window.
@@ -42,20 +42,19 @@ A robust, full-stack web application engineered to streamline asset management, 
 
 ## 🛠️ Technical Specification
 
-* **Backend Framework:** Python 3.x, Flask (Microframework)
-* **Object-Relational Mapping (ORM):** Flask-SQLAlchemy (Ensures ACID compliance)
+* **Backend Framework:** Python, Flask
+* **Object-Relational Mapping (ORM):** Flask-SQLAlchemy (ACID Compliant)
 * **API Security Middleware:** Flask-CORS (Cross-Origin Resource Sharing handling)
-* **Database Layer:** SQLite3 (Embedded, file-based relational engine)
-* **Frontend Ecosystem:** Semantic HTML5, Modular CSS3, Vanilla ECMAScript 6+, Font Awesome Typography
+* **Database Layer:** SQLite3 (Embedded relational database)
+* **Frontend Ecosystem:** Semantic HTML5, CSS3, Vanilla JavaScript (ES6+), Font Awesome 
 
 ---
 
-## ⚙️ Deployment & Local Environment Setup
+## ⚙️ Installation & Environment Setup
 
-### 1. Prerequisites
-Ensure your local host contains **Python 3.8+** and **Git** within the system environment path.
+Follow these steps to configure and run the application in a local development environment:
 
-### 2. Repository Initialization
+### 1. Repository Initialization
 ```bash
 git clone [https://github.com/your-username/library-management-system.git](https://github.com/your-username/library-management-system.git)
 cd library-management-system
