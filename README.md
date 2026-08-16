@@ -1,125 +1,60 @@
-+-----------------------------------------------------------------------------------+
-|                                                                                   |
-|  # 📚 Enterprise Library Management System (LMS)                                  |
-|                                                                                   |
-|  > **A robust, full-stack administrative platform designed for modern academic**  |
-|  > **and organizational libraries.**                                              |
-|                                                                                   |
-|  ---                                                                              |
-|                                                                                   |
-|  ## 📑 Table of Contents                                                          |
-|  - [System Architecture](#-system-architecture)                                   |
-|  - [Core Features](#-core-features)                                               |
-|  - [Technology Stack](#-technology-stack)                                         |
-|  - [Operational Workflow](#-operational-workflow)                                 |
-|  - [System Requirements](#-system-requirements)                                   |
-|  - [Roadmap](#-roadmap)                                                           |
-|                                                                                   |
-|  ---                                                                              |
-|                                                                                   |
-|  ## 🏗️ System Architecture                                                         |
-|                                                                                   |
-|  ```text                                                                          |
-|  +-----------------------------------------------------------------------------+  |
-|  |                            PRESENTATION LAYER                               |  |
-|  |                Responsive UI (HTML5 / CSS3 / JavaScript / Font Awesome)     |  |
-|  +--------------------------------------+--------------------------------------+  |
-|                                         |                                         |
-|                                dynamic REST APIs                                  |
-|                                         v                                         |
-|  +--------------------------------------+--------------------------------------+  |
-|  |                            APPLICATION LAYER                                |  |
-|  |                     Flask Microframework (Python 3.x)                      |  |
-|  |            Authentication | Authorization | Business Logic Engine           |  |
-|  +--------------------------------------+--------------------------------------+  |
-|                                         |                                         |
-|                                   ORM Queries                                     |
-|                                         v                                         |
-|  +--------------------------------------+--------------------------------------+  |
-|  |                               DATA LAYER                                    |  |
-|  |                      SQLite Database (SQLAlchemy ORM)                       |  |
-|  |               Users | Inventory | Active Loans | System Logs                |  |
-|  +-----------------------------------------------------------------------------+  |
-|  ```                                                                              |
-|                                                                                   |
-|  ---                                                                              |
-|                                                                                   |
-|  ## ⚙️ Core Features                                                             |
-|                                                                                   |
-|  ### 🔒 Identity & Access Management (IAM)                                        |
-|  * **Role-Based Access Control (RBAC):** Tiered permissions enforcing access     |
-|    boundaries for Administrator, Faculty, and Student roles.                      |
-|  * **Secure Authentication:** User credential validation and session handling.    |
-|  * **Member Lifecycle Management:** Streamlined onboarding, profile status       |
-|    tracking, and member revocation workflows.                                     |
-|                                                                                   |
-|  ### 📦 Inventory & Catalog Management                                            |
-|  * **Catalog Control:** Comprehensive CRUD operations (Create, Read, Update,      |
-|    Delete/Archive) for library items.                                             |
-|  * **Automated Stock Tracking:** Dynamic stock updates guaranteeing real-time     |
-|    inventory visibility across all categories.                                    |
-|  * **Metadata Metadata Indexing:** Tracks key attributes including ISBN, author,   |
-|    publisher, genre, and edition.                                                 |
-|                                                                                   |
-|  ### 🔄 Circulation Engine & Fine Calculation                                    |
-|  * **Automated Check-in / Check-out:** Fast transaction handling for resource     |
-|    borrowing and returns.                                                         |
-|  * **Stock Synchronization:** Automatic inventory decrementing on check-out      |
-|    and incrementing upon return.                                                  |
-|  * **Automated Penalty System:** Configurable fine processing engine calculating   |
-|    accrued penalties for overdue items daily.                                     |
-|                                                                                   |
-|  ### 📈 Operational Dashboard & Reporting                                         |
-|  * **Analytics Overview:** Single-pane dashboard displaying metrics for total     |
-|    titles, registered users, active loans, and overdue counts.                    |
-|  * **Real-time Activity Stream:** Centralized log highlighting recent checkouts,  |
-|    returns, and registry changes.                                                 |
-|  * **Audit Logging:** System logs capturing authentication attempts, user       |
-|    creations, catalog updates, and transactions for compliance.                   |
-|                                                                                   |
-|  ---                                                                              |
-|                                                                                   |
-|  ## 🛠️ Technology Stack                                                           |
-|                                                                                   |
-|  | Component | Specification | Description |                                      |
-|  | :--- | :--- | :--- |                                                           |
-|  | **Language** | Python 3.10+ | Core Application Runtime |                        |
-|  | **Backend** | Flask | Web Framework & REST Endpoint Router |                   |
-|  | **Middleware** | Flask-CORS | Cross-Origin Resource Sharing Handler |             |
-|  | **ORM** | Flask-SQLAlchemy | Object-Relational Database Mapping |               |
-|  | **Database** | SQLite3 | Embedded Relational Database |                          |
-|  | **Frontend UI** | HTML5 / CSS3 / JavaScript | Modern Responsive Web UI |       |
-|  | **Iconography** | Font Awesome 6 | Standard Interface Components |           |
-|                                                                                   |
-|  ---                                                                              |
-|                                                                                   |
-|  ## 🔁 Operational Workflow                                                       |
-|                                                                                   |
-|  1. **Authentication & Authorization:** System checks user permissions before      |
-|     granting access to specific module tools.                                     |
-|  2. **Inventory Entry:** New items are registered with specific quantities and     |
-|     catalog attributes.                                                           |
-|  3. **Loan Request Processing:** Validates patron account status and decrements     |
-|     available stock upon issuance.                                                |
-|  4. **Return & Settlement:** Increments available inventory stock, evaluates due   |
-|     date criteria, and computes penalties if applicable.                          |
-|  5. **Audit Logging:** System automatically commits transaction state changes to    |
-|     immutable event records.                                                      |
-|                                                                                   |
-|  ---                                                                              |
-|                                                                                   |
-|  ## 📌 System Requirements                                                         |
-|                                                                                   |
-|  * **Python:** v3.8 or higher                                                     |
-|  * **Browser Support:** Chrome, Firefox, Safari, Edge (Modern standard ES6+)       |
-|  * **Dependencies:** `Flask`, `Flask-SQLAlchemy`, `Flask-CORS`                      |
-|                                                                                   |
-|  ---                                                                              |
-|                                                                                   |
-|  ## 🚀 Roadmap                                                                    |
-|                                                                                   |
-|  * [ ] Integration with SMTP services for automated email due-date alerts.        |
-|  * [ ] Hardware barcode and QR scanner integration for fast checkout routing.     |
-|  * [ ] Export engine for downloading usage and penalty metrics (PDF/Excel).        |
-|                                                                                   |
-+-----------------------------------------------------------------------------------+
+# 📚 Library Management System (LMS)
+
+An enterprise-grade, full-stack management solution engineered to automate asset cataloging, membership lifecycles, and circulation workflows. Built on a modular **Python Flask** architecture and powered by **Flask-SQLAlchemy**, this system delivers a secure, role-based platform for managing library operations with real-time analytical insights and comprehensive activity tracking.
+
+---
+
+## 🚀 Core Features
+
+### 👤 Identity & Access Control
+* **Role-Based Access Control (RBAC):** Tiered system permissions separating administrative capabilities from standard **Student** and **Faculty** workflows.
+* **Session Management:** Secure user registration, credential-validated login protocols, and route protection middleware.
+* **Member Registry:** Centralized portal for profiling, monitoring, and structural offboarding of library members.
+
+### 📖 Inventory & Catalogue Architecture
+* **Asset Lifecycle Management:** Full CRUD (Create, Read, Update, Delete) capability for library resources.
+* **Real-Time Stock Tracking:** Dynamic tracking of available stock quantities that auto-increments or decrements upon transaction events to eliminate concurrency errors.
+* **Unified Catalogue:** High-performance, searchable interface exposing real-time book metadata and availability states.
+
+### 🔖 Transactional Circulation Engine
+* **Circulation Lifecycle:** Automated workflows linking book issuance and returns directly to active member accounts.
+* **Automated Fine Aggregator:** Embedded arithmetic module calculating late return fees against strict, custom due dates.
+* **Exceeded-Term Tracking:** Proactive flag systems identifying and isolating overdue materials.
+
+### 📊 Operational Analytics & Ledger
+* **Dynamic Analytics:** Real-time visibility into mission-critical metrics:
+  | Metric | Functional Description |
+  | :--- | :--- |
+  | **Total Cataloged** | Global aggregate of unique books managed across the ecosystem. |
+  | **Active Directory** | Total count of verified system members (Admin, Student, Faculty). |
+  | **Circulation Load** | Real-time counter of assets checked out by consumers. |
+  | **Deficit Monitoring** | Live calculation of overdue books outstanding. |
+* **Activity Stream:** A continuous, real-time ledger displaying immediate library transactions executing within the current day.
+
+### 📝 Immutable System Auditing
+* **Central Log Broker:** System-wide audit logging for accountability tracking, including:
+  - User Authentication & Authorization Events
+  - Inventory Structural Modifications (Additions/Deletions)
+  - Circulation Ingestion and Termination Records
+  - Member Sign-ups
+
+---
+
+## 🛠️ Technical Specification
+
+* **Backend Framework:** Python, Flask
+* **Object-Relational Mapping (ORM):** Flask-SQLAlchemy (ACID Compliant)
+* **API Security Middleware:** Flask-CORS (Cross-Origin Resource Sharing handling)
+* **Database Layer:** SQLite3 (Embedded relational database)
+* **Frontend Ecosystem:** Semantic HTML5, CSS3, Vanilla JavaScript (ES6+), Font Awesome Icons
+
+---
+
+## ⚙️ Installation & Environment Setup
+
+Follow these steps to configure and run the application in a local development environment:
+
+### 1. Repository Initialization
+```bash
+git clone [https://github.com/your-username/library-management-system.git](https://github.com/your-username/library-management-system.git)
+cd library-management-system
