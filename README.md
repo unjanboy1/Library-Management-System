@@ -1,61 +1,48 @@
-# 📚 Enterprise Library Management System (ELMS)
+# 📚 Library Management System
 
-A robust, full-stack web application engineered to streamline asset management, membership lifecycles, and operational workflows for modern library infrastructures. Built on a modular **Python Flask** backend and powered by an optimized **SQLite** relational database, this platform features role-based access control, an automated fiscal engine for compliance, and granular activity auditing.
-
----
-
-## 🚀 Core Architecture & Features
-
-### 👤 Identity & Access Management (IAM)
-* **Role-Based Access Control (RBAC):** Tiered permissions mapping specific access boundaries for **Admin**, **Student**, and **Faculty** roles.
-* **Session Security:** State-managed user registration, secure credential verification, and protected routing.
-* **Member Lifecycle Administration:** Centralized registry for adding, profiling, and deprecating system actors.
-
-### 📖 Asset & Catalog Management
-* **Inventory Control:** Full CRUD capabilities for resource ingestion, metadata maintenance, and asset deletion.
-* **Real-time Stock Serialization:** Dynamically tracks available quantities across the inventory pool, reducing concurrency conflicts.
-* **Global Catalogue:** Performance-focused view layout for instantaneous resource indexing and discovery.
-
-### 🔖 Transactional Circulation Engine
-* **Circulation Lifecycle:** Automated workflows linking book issuance and returns directly to active member accounts.
-* **Automated Fine Aggregator:** Embedded arithmetic module calculating late return fees against strict, custom due dates.
-* **Exceeded-Term Tracking:** Proactive flag systems identifying and isolating overdue materials.
-
-### 📊 Operational Intelligence Dashboard
-* **Dynamic Analytics:** Real-time visibility into mission-critical metrics:
-  | Metric | Description |
-  | :--- | :--- |
-  | **Total Cataloged** | Global aggregate of books managed across the ecosystem. |
-  | **Active Directory** | Total count of verified system members. |
-  | **Circulation Load** | Real-time counter of assets checked out by consumers. |
-  | **Deficit Monitoring** | Live calculation of overdue books outstanding. |
-* **Daily Ledger:** Real-time visibility into transaction metrics executing within the active 24-hour window.
-
-### 📝 Immutable System Auditing
-* **Central Log Broker:** System-wide audit logging for accountability tracking, including:
-  - User Authentication & Authorization Events
-  - Inventory Structural Modifications (Additions/Deletions)
-  - Circulation Ingestion and Termination Records
-  - Member Sign-ups
+A modern, full-stack **Library Management System** built using **Python Flask** and **SQLite**. Designed for educational institutions and community libraries, this platform streamlines the management of catalogs, memberships, and circulation workflows while offering real-time insights through an interactive dashboard.
 
 ---
 
-## 🛠️ Technical Specification
+## 🚀 Key Features
 
-* **Backend Framework:** Python 3.x, Flask (Microframework)
-* **Object-Relational Mapping (ORM):** Flask-SQLAlchemy (Ensures ACID compliance)
-* **API Security Middleware:** Flask-CORS (Cross-Origin Resource Sharing handling)
-* **Database Layer:** SQLite3 (Embedded, file-based relational engine)
-* **Frontend Ecosystem:** Semantic HTML5, Modular CSS3, Vanilla ECMAScript 6+, Font Awesome Typography
+### 👤 User & Membership Management
+* **Secure Authentication:** User registration and session-based login.
+* **Role-Based Access Control (RBAC):** Distinct permissions and workflows for **Admins**, **Students**, and **Faculty**.
+* **Member Administration:** Full lifecycle management including profile registration and structural deletion.
+
+### 📖 Book Inventory Management
+* **Dynamic Catalogue:** Comprehensive view of the entire book inventory with advanced tracking.
+* **Automated Stock Control:** Live tracking of "Available Quantity" that auto-updates upon issue or return events.
+* **Full CRUD Operations:** Add, update, and remove book listings with ease.
+
+### 🔖 Circulation & Fine Automation
+* **Issue & Return Workflow:** Seamless checkout and check-in pipelines mapped to specific members.
+* **Fine Calculation Engine:** Automated logic to calculate penalties for late returns based on due dates.
+* **Overdue Tracking:** Proactive tracking of outstanding items to identify late returns instantly.
+
+### 📊 Analytics Dashboard & Activity Logging
+* **Real-time Metrics:** High-level counters for *Total Books*, *Active Members*, *Currently Issued*, and *Overdue Items*.
+* **Audit Trails & Logs:** System-wide activity feeds logging structural events (logins, additions, issues, and returns) for security compliance.
 
 ---
 
-## ⚙️ Deployment & Local Environment Setup
+## 🛠️ Tech Stack
+
+* **Backend:** Python, Flask, Flask-SQLAlchemy (ORM), Flask-CORS
+* **Database:** SQLite3
+* **Frontend:** HTML5, CSS3, JavaScript (ES6+), Font Awesome (Icons)
+
+---
+
+## ⚙️ Installation & Setup
+
+Follow these steps to configure and run the application in a local development environment.
 
 ### 1. Prerequisites
-Ensure your local host contains **Python 3.8+** and **Git** within the system environment path.
+Ensure you have **Python 3.x** and **Git** installed on your machine.
 
-### 2. Repository Initialization
+### 2. Clone the Repository
 ```bash
 git clone [https://github.com/your-username/library-management-system.git](https://github.com/your-username/library-management-system.git)
 cd library-management-system
